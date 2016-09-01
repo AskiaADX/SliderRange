@@ -1,0 +1,33 @@
+{%
+Dim checked
+Dim selected
+Dim rs = CurrentQuestion.AvailableResponses
+Dim i
+%}
+<div id="adc_{%= CurrentADC.InstanceId %}" class="adc-slider-range-{%= CurrentADC.InstanceId %}">
+    <div id="slider-container-{%= CurrentADC.InstanceId %}" class="containers">
+        <div id="labelsTop-{%= CurrentADC.InstanceId %}" class="labelsTop"></div>
+        <div id="sliderRange-{%= CurrentADC.InstanceId %}" class="sliderRange"></div>
+        <div id="labelsBottom-{%= CurrentADC.InstanceId %}" class="labelsBottom"></div>
+        <div id="hidden-inputs-{%= CurrentADC.InstanceId %}"><ul>
+                {%For i = 1 To rs.count
+    				If Not(rs[i].IsExclusive) Then 
+        				checked = On(rs[i].IsSelected, "checked=\"checked\"", "")
+        				selected = On(rs[i].IsSelected, "selected-", "")%}
+                		<li><input type="radio" name="{%= rs[i].InputName() %}" class="input-slider input-slider-{%= CurrentADC.InstanceId %} {%:= selected %}{%= CurrentADC.InstanceId %}" value="{%= rs[i].InputValue() %}" {%:= checked %}/></li>
+            		{%EndIf%}
+                {%Next%}
+            </ul>
+        </div>
+    </div>
+    <div id="container-{%= CurrentADC.InstanceId %}" class="containers buttons">
+        {%For i = 1 To rs.count
+    		If rs[i].IsExclusive Then 
+        			checked = On(rs[i].IsSelected, "checked=\"checked\"", "")
+        			selected = On(rs[i].IsSelected, "selected-", "")%}
+        			<input type="button" name="{%= rs[i].InputName() %}" class="exclusive" value="{%= rs[i].Caption %}"/>
+		        	<input type="radio" name="{%= rs[i].InputName() %}" class="input-exclusive {%:= selected %}{%= CurrentADC.InstanceId %}" value="{%= rs[i].InputValue() %}" {%:= checked %}/>
+    		{%EndIf
+		Next%}
+    </div>
+</div>

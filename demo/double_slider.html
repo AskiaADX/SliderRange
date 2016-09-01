@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>Demo slider numeric</title>
+        <link rel="stylesheet" href="../resources/static/nouislider.min.css" />
+        <link rel="stylesheet" href="../resources/static/adc2_sliderRange.css" />
+        <script src="../resources/static/nouislider.js"></script>
+        <script src="../resources/static/wNumb.js"></script>
+        <script src="../resources/static/sliderRange.js"></script>
+    </head>
+    <body>
+        <style>
+            #adc_4 .pips {
+                background : #999;
+            }
+            
+            #slider-container-4 {
+                margin-top : 100px;
+            }
+
+            #adc_4 .topLabel {
+                font-size 	: 18px;
+                color 		: red;
+                border 		: 1px solid black;
+                padding		: 5px;
+                max-width	: 200px;
+                background	: #DDD;
+            }
+            
+            #adc_4 .noUi-value-horizontal {
+                margin : 10px 0;/*scale implementation*/
+            }
+
+            /*property of slider when selected*/
+            #adc_4 .stateOn {
+                box-shadow : inset 0 0 3px rgba(51,51,51,.45);
+                background : #3FB8AF;
+            }
+
+            /*property of slider when unselected*/
+            #adc_4 .stateOff {
+                box-shadow : none;
+                background : #FAFAFA;
+            }
+
+            #adc_4 .noUi-pips, #adc_4 .noUi-pips-horizontal {
+                /*display : none;  if you want to remove the scale*/
+            }
+
+            #adc_4 .noUi-marker {
+                background : #AAA;
+            }
+            
+            #adc_4 .noUi-value, #adc_4 .noUi-value-horizontal, #adc_4 .noUi-value-large {
+                font-size	: 10px; /*size of the font in the scale*/
+                color   	: #999;/*color of the font in the scale*/
+            }
+
+            /*property of the number selected*/
+            #adc_4 .currentNumber {
+                font-size 	: 20px;
+                color   	: rgb(153,153,153);
+            }
+
+            #adc_4 .sliderRange, #adc_4 .labelsTop {
+                max-width : 500px;
+            }
+
+            #adc_4 .startAndEnd {
+                font-size 	: 30px;
+                color 		: red;
+                border 		: 1px solid black;
+                padding		: 5px;
+                max-width	: 200px;
+                background	: #DDD;
+            }
+            
+            #adc_4 .exclusive {
+                font-size 	: 16px;
+                border 		: 1px solid black;
+                margin 		: 0 0 0 auto;
+                color 		: white;
+                background 	: black;
+                max-width 	: 200px;
+            }
+            
+            #adc_4 .exclusive:hover {
+                font-size 	: 16px;
+                border 		: 1px solid black;
+                margin 		: 0 0 auto 0;
+                color 		: black;
+                background 	: #DDD;
+                max-width 	: 200px;
+            }
+
+            #adc_4 .selected, #adc_4 .selected:hover {
+                color 		: black;
+                background 	: white;
+                border 		: 1px solid black;
+            }
+
+            #adc_4 .containers {
+                max-width 	: 90%;
+            }
+            
+            #adc_3 .pips {
+                background : #999;
+            }
+            
+            #slider-container-3 {
+                margin-top : 100px;
+            }
+
+            #adc_3 .topLabel {
+                font-size 	: 18px;
+                color 		: red;
+                border 		: 1px solid black;
+                padding		: 5px;
+                max-width	: 200px;
+                background	: #DDD;
+            }
+            
+            #adc_3 .noUi-value-horizontal {
+                margin : 10px 0;/*scale implementation*/
+            }
+
+            /*property of slider when selected*/
+            #adc_3 .stateOn {
+                box-shadow : inset 0 0 3px rgba(51,51,51,.45);
+                background : #3FB8AF;
+            }
+
+            /*property of slider when unselected*/
+            #adc_3 .stateOff {
+                box-shadow : none;
+                background : #FAFAFA;
+            }
+
+            #adc_3 .noUi-pips, #adc_3 .noUi-pips-horizontal {
+                /*display : none;  if you want to remove the scale*/
+            }
+
+            #adc_3 .noUi-marker {
+                background : #AAA;
+            }
+            
+            #adc_3 .noUi-value, #adc_3 .noUi-value-horizontal, #adc_3 .noUi-value-large {
+                font-size	: 10px; /*size of the font in the scale*/
+                color   	: #999;/*color of the font in the scale*/
+            }
+
+            /*property of the number selected*/
+            #adc_3 .currentNumber {
+                font-size 	: 20px;
+                color   	: rgb(153,153,153);
+            }
+
+            #adc_3 .sliderRange, #adc_3 .labelsTop {
+                max-width : 500px;
+            }
+
+            #adc_3 .startAndEnd {
+                font-size 	: 30px;
+                color 		: red;
+                border 		: 1px solid black;
+                padding		: 5px;
+                max-width	: 200px;
+                background	: #DDD;
+            }
+            
+            #adc_3 .exclusive {
+                font-size 	: 16px;
+                border 		: 1px solid black;
+                margin 		: auto;
+                color 		: white;
+                background 	: black;
+                max-width 	: 200px;
+            }
+            
+            #adc_3 .exclusive:hover {
+                font-size 	: 16px;
+                border 		: 1px solid black;
+                margin 		: 0 0 auto 0;
+                color 		: black;
+                background 	: #DDD;
+                max-width 	: 200px;
+            }
+
+            #adc_3 .selected, #adc_3 .selected:hover {
+                color 		: black;
+                background 	: white;
+                border 		: 1px solid black;
+            }
+
+            #adc_3 .containers {
+                max-width 	: 90%;
+            }
+            
+            #adc_2 .pips {
+                background : #999;
+            }
+            
+            #slider-container-2 {
+                margin-top : 100px;
+            }
+
+            #adc_2 .topLabel {
+                font-size 	: 18px;
+                color 		: red;
+                border 		: 1px solid black;
+                padding		: 5px;
+                max-width	: 200px;
+                background	: #DDD;
+            }
+            
+            #adc_2 .noUi-value-horizontal {
+                margin : 10px 0;/*scale implementation*/
+            }
+
+            /*property of slider when selected*/
+            #adc_2 .stateOn {
+                box-shadow : inset 0 0 3px rgba(51,51,51,.45);
+                background : #3FB8AF;
+            }
+
+            /*property of slider when unselected*/
+            #adc_2 .stateOff {
+                box-shadow : none;
+                background : #FAFAFA;
+            }
+
+            #adc_2 .noUi-pips, #adc_2 .noUi-pips-horizontal {
+                /*display : none;  if you want to remove the scale*/
+            }
+
+            #adc_2 .noUi-marker {
+                background : #AAA;
+            }
+            
+            #adc_2 .noUi-value, #adc_2 .noUi-value-horizontal, #adc_2 .noUi-value-large {
+                font-size	: 10px; /*size of the font in the scale*/
+                color   	: #999;/*color of the font in the scale*/
+            }
+
+            /*property of the number selected*/
+            #adc_2 .currentNumber {
+                font-size 	: 20px;
+                color   	: rgb(153,153,153);
+            }
+
+            #adc_2 .sliderRange, #adc_2 .labelsTop {
+                max-width : 500px;
+            }
+
+            #adc_2 .startAndEnd {
+                font-size 	: 30px;
+                color 		: red;
+                border 		: 1px solid black;
+                padding		: 5px;
+                max-width	: 200px;
+                background	: #DDD;
+            }
+            
+            #adc_2 .exclusive {
+                font-size 	: 16px;
+                border 		: 1px solid black;
+                margin 		: 0 0 auto 0;
+                color 		: white;
+                background 	: black;
+                max-width 	: 200px;
+            }
+            
+            #adc_2 .exclusive:hover {
+                font-size 	: 16px;
+                border 		: 1px solid black;
+                margin 		: 0 0 auto 0;
+                color 		: black;
+                background 	: #DDD;
+                max-width 	: 200px;
+            }
+
+            #adc_2 .selected, #adc_2 .selected:hover {
+                color 		: black;
+                background 	: white;
+                border 		: 1px solid black;
+            }
+
+            #adc_2 .containers {
+                max-width 	: 90%;
+            }
+            
+            #adc_1 .pips {
+                background : #999;
+            }
+            
+            #slider-container-1 {
+                margin-top : 100px;
+            }
+
+            #adc_1 .topLabel {
+                font-size 	: 18px;
+                color 		: red;
+                border 		: 1px solid black;
+                padding		: 5px;
+                max-width	: 200px;
+                background	: #DDD;
+            }
+            
+            #adc_1 .noUi-value-horizontal {
+                margin : 10px 0;/*scale implementation*/
+            }
+
+            /*property of slider when selected*/
+            #adc_1 .stateOn {
+                box-shadow : inset 0 0 3px rgba(51,51,51,.45);
+                background : #3FB8AF;
+            }
+
+            /*property of slider when unselected*/
+            #adc_1 .stateOff {
+                box-shadow : none;
+                background : #FAFAFA;
+            }
+
+            #adc_1 .noUi-pips, #adc_1 .noUi-pips-horizontal {
+                /*display : none;  if you want to remove the scale*/
+            }
+
+            #adc_1 .noUi-marker {
+                background : #AAA;
+            }
+            
+            #adc_1 .noUi-value, #adc_1 .noUi-value-horizontal, #adc_1 .noUi-value-large {
+                font-size	: 10px; /*size of the font in the scale*/
+                color   	: #999;/*color of the font in the scale*/
+            }
+
+            /*property of the number selected*/
+            #adc_1 .currentNumber {
+                font-size 	: 20px;
+                color   	: rgb(153,153,153);
+            }
+
+            #adc_1 .sliderRange, #adc_1 .labelsTop {
+                max-width : 500px;
+            }
+
+            #adc_1 .startAndEnd {
+                font-size 	: 30px;
+                color 		: red;
+                border 		: 1px solid black;
+                padding		: 5px;
+                max-width	: 200px;
+                background	: #DDD;
+            }
+            
+            #adc_1 .exclusive {
+                font-size 	: 16px;
+                border 		: 1px solid black;
+                margin 		: 0 0 auto 0;
+                color 		: white;
+                background 	: black;
+                max-width 	: 200px;
+            }
+            
+            #adc_1 .exclusive:hover {
+                font-size 	: 16px;
+                border 		: 1px solid black;
+                margin 		: 0 0 auto 0;
+                color 		: black;
+                background 	: #DDD;
+                max-width 	: 200px;
+            }
+
+            #adc_1 .selected, #adc_1 .selected:hover {
+                color 		: black;
+                background 	: white;
+                border 		: 1px solid black;
+            }
+
+            #adc_1 .containers {
+                max-width 	: 90%;
+            }
+        </style>
+        <div id="adc_1" class="adc-slider-range">
+            <h1>Slider for multiples 1</h1>
+            <div id="slider-container-1" class="containers">
+                <div id="labelsTop-1" class="labelsTop"></div>
+                <div id="sliderRange-1" class="sliderRange"></div>
+                <div id="labelsBottom-1" class="labelsBottom"></div>
+                <div id="hidden-inputs-1"></div>
+            </div>
+            <div id="container-1" class="containers buttons">
+                <input type="button" name="adc-slider-range-exclusive-button-1-1" class="exclusive" value="Exclusive 1"/>
+                <input type="radio" name="adc-slider-range-exclusive-1-1" class="input-exclusive"/>
+                <input type="button" name="adc-slider-range-exclusive-button-1-2" class="exclusive" value="Exclusive 2"/>
+                <input type="radio" name="adc-slider-range-exclusive-1-2" class="input-exclusive"/>
+            </div>
+        </div>
+        <div id="adc_2" class="adc-slider-range">
+            <h1>Slider for multiples 2</h1>
+            <div id="slider-container-2" class="containers">
+                <div id="labelsTop-2" class="labelsTop"></div>
+                <div id="sliderRange-2" class="sliderRange"></div>
+                <div id="labelsBottom-2" class="labelsBottom"></div>
+                <div id="hidden-inputs-2"></div>
+            </div>
+            <div id="container-2" class="containers buttons">
+                <input type="button" name="adc-slider-range-exclusive-button-2-1" class="exclusive" value="Exclusive 1"/>
+                <input type="radio" name="adc-slider-range-exclusive-2-1" class="input-exclusive"/>
+                <input type="button" name="adc-slider-range-exclusive-button-2-2" class="exclusive" value="Exclusive 2"/>
+                <input type="radio" name="adc-slider-range-exclusive-2-2" class="input-exclusive"/>
+            </div>
+        </div>
+        <div id="adc_3" class="adc-slider-range">
+            <h1>Slider for Numeric 3</h1>
+            <div id="slider-container-3" class="containers">
+                <div id="labelsTop-3" class="labelsTop"></div>
+                <div id="sliderRange-3" class="sliderRange"></div>
+                <div id="labelsBottom-3" class="labelsBottom"></div>
+                <div id="hidden-inputs-3"></div>
+            </div>
+            <div id="container-3" class="containers buttons">
+                <input type="button" name="adc-slider-range-exclusive-button-3-1" class="exclusive" value="Exclusive 1"/>
+                <input type="number" name="adc-slider-range-exclusive-3-1" class="input-exclusive"/>
+                <input type="button" name="adc-slider-range-exclusive-button-3-2" class="exclusive" value="Exclusive 2"/>
+                <input type="number" name="adc-slider-range-exclusive-3-2" class="input-exclusive"/>
+            </div>
+        </div>
+        <div id="adc_4" class="adc-slider-range-4 adc-slider-range">
+            <h1>Slider for Numeric 4</h1>
+            <div id="slider-container-4" class="containers">
+                <div id="labelsTop-4" class="labelsTop"></div>
+                <div id="sliderRange-4" class="sliderRange"></div>
+                <div id="labelsBottom-4" class="labelsBottom"></div>
+                <div id="hidden-inputs-4"></div>
+            </div>
+            <div id="container-4" class="containers buttons">
+                <input type="button" name="adc-slider-range-exclusive-button-4-1" class="exclusive" value="Exclusive 1"/>
+                <input type="number" name="adc-slider-range-exclusive-4-1" class="input-exclusive"/>
+                <input type="button" name="adc-slider-range-exclusive-button-4-2" class="exclusive" value="Exclusive 2"/>
+                <input type="number" name="adc-slider-range-exclusive-4-2" class="input-exclusive"/>
+            </div>
+        </div>
+        <script>
+            slider({
+                start			: "33%",
+                end   			: "66%",
+                min				: -5,
+                max				: 0,
+                step			: 0.5,
+                margin 			: 0,
+                startContent	: "start",
+                endContent		: "end",
+                orientation		: "horizontal",
+                direction		: "rtl",
+                density			: 1,
+                tooltips 		: true,
+                decimals 		: 1,
+                thousand 		: ".",
+                mark			: ",",
+                prefix			: "$",
+                postfix			: " by day",
+                negative		: "-",
+                scaleRemote 	: 900,
+                labelPosition	: "bottom",
+                questionType	: "multiple",
+                instanceId		: 1,
+                height			: "200px",
+                width 			: "800px",
+                excluPosition	: "left",
+                topLabelArray 	: "Left,Middle,Rigth",
+                topLabelPosition: "0,50,100"
+            });
+            slider({
+                start			: "33%",
+                end   			: "66%",
+                min				: 0,
+                max				: 10,
+                step			: 0.5,
+                margin 			: 0,
+                startContent	: "start",
+                endContent		: "end",
+                orientation		: "vertical",
+                direction		: "ltr",
+                density			: 1,
+                tooltips 		: true,
+                decimals 		: 1,
+                thousand 		: ".",
+                mark			: ",",
+                prefix			: "$",
+                postfix			: " by day",
+                negative		: "-",
+                scaleRemote 	: 500,
+                labelPosition	: "left",
+                questionType	: "multiple",
+                instanceId		: 2,
+                width 			: "20px",
+                height			: "800px",
+                excluPosition	: "right"
+            });
+            slider({
+                start			: "33%",
+                end   			: "66%",
+                min				: 0,
+                max				: 5,
+                step			: 0.5,
+                margin 			: 0,
+                startContent	: "start",
+                endContent		: "end",
+                orientation		: "horizontal",
+                direction		: "ltr",
+                density			: 1,
+                tooltips 		: true,
+                decimals 		: 1,
+                thousand 		: ".",
+                mark			: ",",
+                prefix			: "$",
+                postfix			: " by day",
+                negative		: "-",
+                scaleRemote 	: 900,
+                labelPosition	: "side",
+                questionType	: "numeric",
+                instanceId		: 3,
+                excluPosition	: "center",
+                height			: "20px",
+                width 			: "800px"
+            });
+            slider({
+                start			: "33%",
+                end   			: "66%",
+                min				: -10,
+                max				: 0,
+                step			: 0.5,
+                margin 			: 0,
+                startContent	: "start",
+                endContent		: "end",
+                orientation		: "vertical",
+                direction		: "ltr",
+                density			: 1,
+                tooltips 		: true,
+                decimals 		: 1,
+                thousand 		: ".",
+                mark			: ",",
+                prefix			: "$",
+                postfix			: " by day",
+                negative		: "-",
+                scaleRemote 	: 500,
+                labelPosition	: "right",
+                questionType	: "numeric",
+                instanceId		: 4,
+                width 			: "500px",
+                height			: "800px",
+                excluPosition	: "right"
+            });
+        </script>
+    </body>
+</html>

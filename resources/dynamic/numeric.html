@@ -1,0 +1,24 @@
+{%
+Dim rs = CurrentQuestion.ParentLoop.AvailableResponses
+Dim i
+%}
+{%If rs.count <> 2 Then %}
+<div id="container-{%= CurrentADC.InstanceId %}" class="containers buttons">
+	<h2>The number of iteration in the loop is not correct. The ADC needs 2 iterations.</h2>
+</div>
+{%Else%}
+<div id="adc_{%= CurrentADC.InstanceId %}" class="adc-slider-range-{%= CurrentADC.InstanceId %}">
+    <div id="slider-container-{%= CurrentADC.InstanceId %}" class="containers">
+        <div id="labelsTop-{%= CurrentADC.InstanceId %}" class="labelsTop"></div>
+        <div id="sliderRange-{%= CurrentADC.InstanceId %}" class="sliderRange"></div>
+        <div id="labelsBottom-{%= CurrentADC.InstanceId %}" class="labelsBottom"></div>
+        <div id="hidden-inputs-{%= CurrentADC.InstanceId %}">
+            <ul>
+                {%For i = 1 To 2 %}
+                <li><input type="number" name="{%= CurrentQuestion.iteration(rs[i].Index).InputName() %}" class="input-slider input-slider-{%= CurrentADC.InstanceId %}" value="{%= CurrentQuestion.iteration(rs[i].Index).InputValue() %}"/></li>
+                {%Next%}
+            </ul>
+        </div>
+    </div>
+</div>
+{%EndIf %}

@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<control  xmlns="http://www.askia.com/ADCSchema"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://www.askia.com/ADCSchema http://www.askia.com/Downloads/dev/schemas/adc2.0/Config.xsd"
+          version="2.0.0"
+          askiaCompat="5.3.3">
+  <info>
+    <name>adc2-sliderRange</name>
+    <guid>f9327eb5-6554-458a-be0e-62eb65fc9ef4</guid>
+    <version>1.0.0</version>
+    <date>2016-07-01</date>
+    <description><![CDATA[This article give you access to the Slider Range Javascript control. You also got access to a live example, qex file example and details of the parameters available for this control.]]></description>
+    <company></company>
+    <author><![CDATA[]]></author>
+    <site></site>
+    <helpURL></helpURL>
+    <categories>
+      <category>General</category>
+    </categories>
+    <style width="400" height="300" />
+    <constraints>
+      <constraint on="questions" chapter="false" single="false" multiple="true" numeric="true" date="false" open="false" requireParentLoop="false" />
+      <constraint on="controls" responseblock="true" label="false" textbox="false" checkbox="false" listbox="false" radiobutton="false" />
+      <constraint on="responses" max="*" min="*" />
+    </constraints>
+  </info>
+  <outputs defaultOutput="Fallback">
+    <output id="Fallback">
+      <description><![CDATA[is javascript not supported]]></description>
+      <condition><![CDATA[Not(Browser.Support("javascript"))]]></condition>
+      <content fileName="multiple.html" type="html" mode="dynamic" position="none" />
+      <content fileName="default.html" type="html" mode="dynamic" position="placeholder" />
+      <content fileName="default.html" type="html" mode="dynamic" position="none" />
+    </output>
+    <output id="Standard">
+      <condition><![CDATA[Browser.Support("Javascript")]]></condition>
+      <content fileName="standard.html" type="html" mode="dynamic" position="placeholder" />
+      <content fileName="multiple.html" type="html" mode="dynamic" position="none" />
+      <content fileName="numeric.html" type="html" mode="dynamic" position="none" />
+      <content fileName="adc2_sliderRange.css" type="css" mode="static" position="head" />
+      <content fileName="nouislider.min.css" type="css" mode="static" position="head" />
+      <content fileName="style.css" type="css" mode="dynamic" position="head" />
+      <content fileName="wNumb.js" type="javascript" mode="static" position="foot" />
+      <content fileName="SliderRange.js" type="javascript" mode="static" position="foot" />
+      <content fileName="nouislider.js" type="javascript" mode="static" position="foot" />
+      <content fileName="multiple.js" type="javascript" mode="dynamic" position="none" />
+      <content fileName="numeric.js" type="javascript" mode="dynamic" position="none" />
+      <content fileName="standard.js" type="javascript" mode="dynamic" position="foot" />
+    </output>
+  </outputs>
+  <properties>
+    <category id="slider_config" name="Slider Configuration">
+      <property xsi:type="standardProperty" id="start_value" name="Start Value" type="string" require="true" visible="true">
+        <description><![CDATA[The first value of the slider]]></description>
+        <value><![CDATA[33]]></value>
+        <options>
+          <option value="0" text="0%" />
+          <option value="25" text="25%" />
+          <option value="33" text="33%" />
+          <option value="50" text="50%" />
+          <option value="66" text="66%" />
+          <option value="75" text="75%" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="end_value" name="End Value" type="string" require="true" visible="true">
+        <description><![CDATA[The last value of the slider]]></description>
+        <value><![CDATA[66]]></value>
+        <options>
+          <option value="25" text="25%" />
+          <option value="33" text="33%" />
+          <option value="50" text="50%" />
+          <option value="66" text="66%" />
+          <option value="75" text="75%" />
+          <option value="100" text="100%" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="margin_value" name="Margin Value" type="number" require="false" visible="true">
+        <description><![CDATA[Value of the minimum distance of the two handles]]></description>
+        <value><![CDATA[0]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="tooltip" name="Tooltip" type="boolean" require="false" visible="true">
+        <description><![CDATA[Display or no tooltips]]></description>
+        <value><![CDATA[false]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="orientation" name="Orientation" type="string" require="false" visible="true">
+        <description><![CDATA[Orientation of the slider]]></description>
+        <value><![CDATA[horizontal]]></value>
+        <options>
+          <option value="horizontal" text="horizontal" />
+          <option value="vertical" text="vertical" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="direction" name="Direction" type="string" require="false" visible="true">
+        <description><![CDATA[Direction of the slider]]></description>
+        <value><![CDATA[ltr]]></value>
+        <options>
+          <option value="ltr" text="Left to Right" />
+          <option value="rtl" text="Right to Left" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="slider_height" name="Height" type="string" require="false" visible="true">
+        <description><![CDATA[Height of the slider]]></description>
+        <value><![CDATA[20px]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="slider_width" name="Width" type="string" require="false" visible="true">
+        <description><![CDATA[Width of the slider]]></description>
+        <value><![CDATA[500px]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="slider_max_width" name="Slider Max Width" type="string" require="false" visible="true">
+        <description><![CDATA[The max Width of the slider]]></description>
+        <value><![CDATA[100%]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="slider_color" name="Slider Color" type="color" require="false" visible="true">
+        <description><![CDATA[The color of the slider when not focus]]></description>
+        <value><![CDATA[250,250,250]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="selected_slider_color" name="Selected Slider Color" type="color" require="false" visible="true">
+        <description><![CDATA[The color of the slider when focus]]></description>
+        <value><![CDATA[0,124,196]]></value>
+      </property>
+    </category>
+    <category id="numeric" name="For Numeric">
+      <property xsi:type="standardProperty" id="step_value" name="Step" type="number" require="false" visible="true">
+        <description><![CDATA[The step between two value]]></description>
+        <value><![CDATA[1]]></value>
+      </property>
+    </category>
+    <category id="scale_and_label_config" name="Scale And Label Configuration">
+      <property xsi:type="standardProperty" id="display_scale" name="Display scale" type="string" require="false" visible="true">
+        <description><![CDATA[Display the scale]]></description>
+        <value><![CDATA[block]]></value>
+        <options>
+          <option value="block" text="yes" />
+          <option value="none" text="no" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="scale_max_width" name="Scale max width" type="string" require="false" visible="true">
+        <description><![CDATA[Scale disapear when the browser's size is inf or equal to the value]]></description>
+        <value><![CDATA[240px]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="scale_density" name="Scale Density" type="number" require="false" visible="true">
+        <description><![CDATA[Density of the scale]]></description>
+        <value><![CDATA[1]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="scale_values_font_size" name="Scale Values Font Size" type="string" require="false" visible="true">
+        <description><![CDATA[Pips font size in scale]]></description>
+        <value><![CDATA[10px]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="scale_values_color" name="Scale Values Color" type="color" require="false" visible="true" colorFormat="rgb">
+        <description><![CDATA[Scale Values Color]]></description>
+        <value><![CDATA[153,153,153]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="scale_color" name="Scale Color" type="color" require="false" visible="true" colorFormat="rgb">
+        <description><![CDATA[Color of the scale]]></description>
+        <value><![CDATA[153,153,153]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="selected_scale_values_font_size" name="Selected Scale Values Font Size" type="string" require="false" visible="true">
+        <description><![CDATA[Selected Scale Values Fond Size]]></description>
+        <value><![CDATA[16px]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="selected_scale_values_color" name="Selected Scale Values Color" type="color" require="false" visible="true" colorFormat="rgb">
+        <description><![CDATA[Selected Scale Values Color]]></description>
+        <value><![CDATA[153,153,153]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="label_right" name="Right Label" type="string" require="false" visible="true">
+        <description><![CDATA[A label display at the right of the slider (in horizontal position) or at the bottom (in vertical position)]]></description>
+        <value><![CDATA[Right side]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="label_left" name="Left Label" type="string" require="false" visible="true">
+        <description><![CDATA[A label display at the left of the slider (in horizontal position) or at the top (in vertical position)]]></description>
+        <value><![CDATA[Left side]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="label_font_size" name="Labels Font Size" type="string" require="false" visible="true">
+        <description><![CDATA[The font size of labels]]></description>
+        <value><![CDATA[20px]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="label_alignment" name="Label Alignment" type="string" require="false" visible="true">
+        <description><![CDATA[Alignment of the two labels]]></description>
+        <value><![CDATA[side]]></value>
+        <options>
+          <option value="side" text="Side" />
+          <option value="top" text="Top" />
+          <option value="bottom" text="Bottom" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="label_color" name="Label Color" type="color" require="false" visible="true" colorFormat="rgb">
+        <description><![CDATA[Color of the two labels]]></description>
+        <value><![CDATA[68,68,68]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="label_background" name="Label Background Color" type="color" require="false" visible="true" colorFormat="rgb">
+        <description><![CDATA[Color of the two labels]]></description>
+        <value><![CDATA[250,250,250]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="top_label_array" name="Top Label Array" type="string" require="false" visible="true">
+        <description><![CDATA[All labels which will be display on the top of the slider]]></description>
+        <value></value>
+      </property>
+      <property xsi:type="standardProperty" id="top_label_position" name="Top Label Position" type="string" require="false" visible="true">
+        <description><![CDATA[Position of the different labels]]></description>
+        <value></value>
+      </property>
+      <property xsi:type="standardProperty" id="sae_border_style" name="Labels Border Style" type="string" require="false" visible="true">
+        <description><![CDATA[The style of the border]]></description>
+        <value><![CDATA[solid]]></value>
+        <options>
+          <option value="none" text="None" />
+          <option value="solid" text="Solid" />
+          <option value="dashed" text="Dashed" />
+          <option value="dotted" text="Dotted" />
+          <option value="double" text="Double" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="sae_border_thickness" name="Labels Border Thickness" type="string" require="false" visible="true">
+        <description><![CDATA[The thickness of the border around the labels responses]]></description>
+        <value><![CDATA[1px]]></value>
+        <options>
+          <option value="none" text="None" />
+          <option value="1px" text="1px" />
+          <option value="2px" text="2px" />
+          <option value="3px" text="3px" />
+          <option value="4px" text="4px" />
+          <option value="5px" text="5px" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="sae_border_color" name="Labels Border Color" type="color" require="false" visible="true" colorFormat="rgb">
+        <description><![CDATA[The color of the border]]></description>
+        <value><![CDATA[68,68,68]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="sae_max_width" name="Labels Max Width" type="string" require="false" visible="true">
+        <description><![CDATA[The max width of labels]]></description>
+        <value><![CDATA[200px]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="sae_padding" name="Labels Padding" type="string" require="false" visible="true">
+        <description><![CDATA[Padding of the differents labels]]></description>
+        <value><![CDATA[5px]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="responsive_width" name="Responsive Side Width" type="number" require="false" visible="true">
+        <description><![CDATA[number of pixel when side alignment become top]]></description>
+        <value><![CDATA[300]]></value>
+      </property>
+    </category>
+    <category id="exclusives_responses" name="Exclusives Responses">
+      <property xsi:type="standardProperty" id="exclu_max_width" name="Exclusive Width" type="string" require="false" visible="true">
+        <description><![CDATA[max width of exclusives buttons]]></description>
+        <value><![CDATA[200px]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="exclu_alignment" name="Exclusive Alignment" type="string" require="false" visible="true">
+        <description><![CDATA[Position of the exclusives responses]]></description>
+        <value><![CDATA[center]]></value>
+        <options>
+          <option value="right" text="Right" />
+          <option value="left" text="Left" />
+          <option value="center" text="Center" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="exclu_font_size" name="Exclusive Font Size" type="string" require="false" visible="true">
+        <description><![CDATA[Font size of exclusives responses]]></description>
+        <value><![CDATA[16px]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="exclu_font_color" name="Exclusive Font Color" type="color" require="false" visible="true" colorFormat="rgb">
+        <description><![CDATA[Font color of exclusives button]]></description>
+        <value><![CDATA[68,68,68]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="exclu_background_color" name="Exclusive Background Color" type="color" require="false" visible="true" colorFormat="rgb">
+        <description><![CDATA[The color of the background]]></description>
+        <value><![CDATA[232,232,232]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="exclu_border_style" name="Exclusive Border Style" type="string" require="false" visible="true">
+        <description><![CDATA[The style of the border]]></description>
+        <value><![CDATA[solid]]></value>
+        <options>
+          <option value="none" text="None" />
+          <option value="solid" text="Solid" />
+          <option value="dashed" text="Dashed" />
+          <option value="dotted" text="Dotted" />
+          <option value="double" text="Double" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="exclu_border_thickness" name="Exclusive Border Thickness" type="string" require="false" visible="true">
+        <description><![CDATA[The thickness of the border around the exclusives responses]]></description>
+        <value><![CDATA[1px]]></value>
+        <options>
+          <option value="none" text="None" />
+          <option value="1px" text="1px" />
+          <option value="2px" text="2px" />
+          <option value="3px" text="3px" />
+          <option value="4px" text="4px" />
+          <option value="5px" text="5px" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="exclu_border_color" name="Exclusive Border Color" type="color" require="false" visible="true" colorFormat="rgb">
+        <description><![CDATA[The color of the border]]></description>
+        <value><![CDATA[68,68,68]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="hover_exclu_font_color" name="Hover Exclusive Font Color" type="color" require="false" visible="true" colorFormat="rgb">
+        <description><![CDATA[Font color of exclusives responses on hover]]></description>
+        <value><![CDATA[68,68,68]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="hover_exclu_background_color" name="Hover Exclusive Background Color" type="color" require="false" visible="true" colorFormat="rgb">
+        <description><![CDATA[Color of the background on hover]]></description>
+        <value><![CDATA[243,243,243]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="hover_exclu_border_style" name="Hover Exclusive Border Style" type="string" require="false" visible="true">
+        <description><![CDATA[Border style on hover]]></description>
+        <value><![CDATA[solid]]></value>
+        <options>
+          <option value="none" text="None" />
+          <option value="solid" text="Solid" />
+          <option value="dashed" text="Dashed" />
+          <option value="dotted" text="Dotted" />
+          <option value="double" text="Double" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="hover_exclu_border_thickness" name="Hover Exclusive Border Thickness" type="string" require="false" visible="true">
+        <description><![CDATA[The thickness of the border around the exclusives responses on hover]]></description>
+        <value><![CDATA[1px]]></value>
+        <options>
+          <option value="none" text="None" />
+          <option value="1px" text="1px" />
+          <option value="2px" text="2px" />
+          <option value="3px" text="3px" />
+          <option value="4px" text="4px" />
+          <option value="5px" text="5px" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="hover_exclu_border_color" name="Hover Exclusive Border Color" type="color" require="false" visible="true" colorFormat="rgb">
+        <description><![CDATA[The color of the border]]></description>
+        <value><![CDATA[68,68,68]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="selected_exclu_font_color" name="Selected Exclusive Font Color" type="color" require="false" visible="true" colorFormat="rgb">
+        <description><![CDATA[Font color of exclusives responses when selected]]></description>
+        <value><![CDATA[255,255,255]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="selected_exclu_background_color" name="Selected Exclusive Background Color" type="color" require="false" visible="true" colorFormat="rgb">
+        <description><![CDATA[Color of the background when selected]]></description>
+        <value><![CDATA[0,157,251]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="selected_exclu_border_style" name="Selected Exclusive Border Style" type="string" require="false" visible="true">
+        <description><![CDATA[Border style when selected]]></description>
+        <value><![CDATA[solid]]></value>
+        <options>
+          <option value="none" text="None" />
+          <option value="solid" text="Solid" />
+          <option value="dashed" text="Dashed" />
+          <option value="dotted" text="Dotted" />
+          <option value="double" text="Double" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="selected_exclu_border_thickness" name="Selected Exclusives Border Thickness" type="string" require="false" visible="true">
+        <description><![CDATA[The thickness of the border around the exclusives responses when selected]]></description>
+        <value><![CDATA[1px]]></value>
+        <options>
+          <option value="none" text="None" />
+          <option value="1px" text="1px" />
+          <option value="2px" text="2px" />
+          <option value="3px" text="3px" />
+          <option value="4px" text="4px" />
+          <option value="5px" text="5px" />
+        </options>
+      </property>
+      <property xsi:type="standardProperty" id="selected_exclu_border_color" name="Selected Exclusive Border Color" type="color" require="false" visible="true" colorFormat="rgb">
+        <description><![CDATA[The color of the border]]></description>
+        <value><![CDATA[255,255,255]]></value>
+      </property>
+    </category>
+    <category id="format_config" name="Format Configuration">
+      <property xsi:type="standardProperty" id="decimal_nbr" name="Decimal Number" type="number" require="false" visible="true">
+        <description><![CDATA[The number of decimal in slider values]]></description>
+        <value><![CDATA[0]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="decimal_separator" name="Decimal Separator" type="string" require="false" visible="true">
+        <description><![CDATA[The string or char used to separate real part and decimal part on a number]]></description>
+        <value></value>
+      </property>
+      <property xsi:type="standardProperty" id="thousand_separator" name="Thousand Separator" type="string" require="false" visible="true">
+        <description><![CDATA[The string or char used to separate thousands part]]></description>
+        <value><![CDATA[ ]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="prefix" name="Prefix" type="string" require="false" visible="true">
+        <description><![CDATA[The prefix of all values in the slider]]></description>
+        <value></value>
+      </property>
+      <property xsi:type="standardProperty" id="postfix" name="Postfix" type="string" require="false" visible="true">
+        <description><![CDATA[The postfix of all values in the slider]]></description>
+        <value></value>
+      </property>
+      <property xsi:type="standardProperty" id="negatives_numbers" name="Negatives Mark" type="string" require="false" visible="true">
+        <description><![CDATA[The string or char used to show the number is under 0]]></description>
+        <value><![CDATA[-]]></value>
+      </property>
+    </category>
+  </properties>
+</control>

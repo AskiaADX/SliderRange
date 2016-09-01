@@ -1,0 +1,106 @@
+{%
+Dim excluPosition
+If CurrentADC.PropValue("exclu_alignment") = "right" Then
+    excluPosition = "0 0 0 auto"
+ElseIf CurrentADC.PropValue("exclu_alignment") = "left" Then
+    excluPosition = "0 0 auto 0"
+Else
+    excluPosition = "auto"
+EndIf
+%}
+
+#adc_{%= CurrentADC.instanceId %} .noUi-value-horizontal {
+    margin : 10px 0;/*scale implementation*/
+}
+
+#adc_{%= CurrentADC.InstanceId %} .pips {
+    background 	: rgb({%= CurrentADC.PropValue("scale_values_color") %});
+}
+
+#adc_{%= CurrentADC.InstanceId %} .topLabel {
+    border 		: {%= CurrentADC.PropValue("sae_border_thickness") %} {%= CurrentADC.PropValue("sae_border_style") %} rgb({%= CurrentADC.PropValue("sae_border_color") %});
+    padding 	: {%= CurrentADC.PropValue("sae_padding") %};
+    font-size 	: {%= CurrentADC.PropValue("label_font_size") %};
+    background	: rgb({%= CurrentADC.PropValue("label_background") %});
+}
+
+#adc_{%= CurrentADC.InstanceId %} .topLabel span{
+    color 		: rgb({%= CurrentADC.PropValue("label_color") %});
+}
+
+#slider-container-{%= CurrentADC.instanceId %} {
+    margin-top : 100px;
+}
+
+/*property of slider when selected*/
+#adc_{%= CurrentADC.instanceId %} .stateOn {
+    box-shadow : inset 0 0 3px rgba(51,51,51,.45);
+    background : rgb({%= CurrentADC.PropValue("selected_slider_color") %});
+}
+
+/*property of slider when unselected*/
+#adc_{%= CurrentADC.instanceId %} .stateOff {
+    box-shadow : none;
+    background : rgb({%= CurrentADC.PropValue("slider_color") %});
+}
+
+#adc_{%= CurrentADC.instanceId %} .noUi-pips, #adc_{%= CurrentADC.instanceId %} .noUi-pips-horizontal {
+    display : {%= CurrentADC.PropValue("display_scale") %}; /* if you want to remove the scale*/
+}
+
+#adc_{%= CurrentADC.instanceId %} .noUi-value, #adc_{%= CurrentADC.instanceId %} .noUi-value-horizontal, #adc_{%= CurrentADC.instanceId %} .noUi-value-large {
+    font-size	: {%= CurrentADC.PropValue("scale_values_font_size") %}; /*size of the font in the scale*/
+    color   	: rgb({%= CurrentADC.PropValue("scale_values_color") %});/*color of the font in the scale*/
+}
+
+#adc_{%= CurrentADC.InstanceId %} .noUi-marker {
+    background : rgb({%= CurrentADC.PropValue("scale_color") %});
+}
+
+/*property of the number selected*/
+#adc_{%= CurrentADC.instanceId %} .currentNumber {
+    font-size 	: {%= CurrentADC.PropValue("selected_scale_values_font_size") %};
+    color   	: rgb({%= CurrentADC.PropValue("selected_scale_values_color") %});
+}
+
+#adc_{%= CurrentADC.instanceId %} .sliderRange, #adc_{%= CurrentADC.instanceId %} .labelsTop {
+    max-width : {%= CurrentADC.PropValue("slider_width") %};
+}
+
+#adc_{%= CurrentADC.instanceId %} .startAndEnd {
+    font-size 	: {%= CurrentADC.PropValue("label_font_size") %};
+    color 		: rgb({%= CurrentADC.PropValue("label_color") %});
+    border 		: {%= CurrentADC.PropValue("sae_border_thickness") %} {%= CurrentADC.PropValue("sae_border_style") %} rgb({%= CurrentADC.PropValue("sae_border_color") %});
+    padding		: {%= CurrentADC.PropValue("sae_padding") %};
+    max-width	: {%= CurrentADC.PropValue("sae_max_width") %};
+    background	: rgb({%= CurrentADC.PropValue("label_background") %});
+}
+
+#adc_{%= CurrentADC.instanceId %} .exclusive {
+    font-size 		: {%= CurrentADC.PropValue("exclu_font_size") %};
+    margin 			: {%= excluPosition %};
+    color 			: rgb({%= CurrentADC.PropValue("exclu_font_color") %});
+    background 		: rgb({%= CurrentADC.PropValue("exclu_background_color") %});
+    max-width 		: {%= CurrentADC.PropValue("exclu_max_width") %};
+    border 			: {%= CurrentADC.PropValue("exclu_border_thickness") %} {%= CurrentADC.PropValue("exclu_border_style") %} rgb({%= CurrentADC.PropValue("exclu_border_color") %});
+    margin-top 		: 10px;
+    margin-bottom 	: 3px;
+}
+
+#adc_{%= CurrentADC.instanceId %} .exclusive:hover {
+    color 		: rgb({%= CurrentADC.PropValue("hover_exclu_font_color") %});
+    background 	: rgb({%= CurrentADC.PropValue("hover_exclu_background_color") %});
+    border 		: {%= CurrentADC.PropValue("hover_exclu_border_thickness") %} {%= CurrentADC.PropValue("hover_exclu_border_style") %} rgb({%= CurrentADC.PropValue("hover_exclu_border_color") %});
+}
+
+#adc_{%= CurrentADC.instanceId %} .selected, #adc_{%= CurrentADC.instanceId %} .selected:hover {
+    color 		: rgb({%= CurrentADC.PropValue("selected_exclu_font_color") %});
+    background 	: rgb({%= CurrentADC.PropValue("selected_exclu_background_color") %});
+    border 		: {%= CurrentADC.PropValue("selected_exclu_border_thickness") %} {%= CurrentADC.PropValue("selected_exclu_border_style") %} rgb({%= CurrentADC.PropValue("selected_exclu_border_color") %});
+}
+
+#adc_{%= CurrentADC.instanceId %} .containers {
+    {% If CurrentADC.PropValue("orientation") = "horizontal" Then %}
+    	max-width  : {%= CurrentADC.PropValue("slider_width") %};
+    {% EndIf %}
+}

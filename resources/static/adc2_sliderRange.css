@@ -1,0 +1,75 @@
+ul, li {
+    list-style : none;
+}
+
+h2 {
+    color : red;
+}
+
+.sliderRange {
+    margin : 30px;
+    margin : auto
+}
+
+.containers {
+    position : relative;
+    width 	 : 100%;
+    margin : auto;
+}
+
+.containers .buttons  {
+    margin-top : 50px;
+}
+
+.noUi-tooltip {
+    word-wrap : break-word;
+    width : 50px;
+}
+
+.startAndEnd {
+    position  	: relative;
+    width		: 100%;
+    text-align 	: center;
+    display 	: block;
+    margin 		: 10px auto;
+}
+
+.exclusive:hover, .noUi-handle:hover {
+    cursor : pointer;
+}
+
+.exclusive {
+    display 		: block;
+    box-shadow 		: 1px 1px 2px 0 #999;
+    border-radius 	: 2px;
+    width 			: 100%;
+    padding 		: 7px 0;
+}
+
+.input-slider, .input-exclusive {
+    display : none;
+}
+
+.pips {
+    position 	: absolute;
+    height 		: 15px;
+    width 		: 2px;
+    padding 	: 0;
+    top 		: 0%
+}
+
+.top-label {
+    width : 100%;
+}
+
+.topLabel {
+    display 	: block;
+    position 	: absolute;
+    top 		: 0%;
+}
+
+.labelsTop, .labelsBottom {
+    height 		: 50px;
+    position 	: relative;
+    margin		: auto;
+}
