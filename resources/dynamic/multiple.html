@@ -25,7 +25,7 @@ Dim i
     		If rs[i].IsExclusive Then 
         			checked = On(rs[i].IsSelected, "checked=\"checked\"", "")
         			selected = On(rs[i].IsSelected, "selected-", "")%}
-        			<input type="button" name="{%= rs[i].InputName() %}" class="exclusive" value="{%= rs[i].Caption %}"/>
+        			<input type="button" name="{%= rs[i].InputName() %}" class="exclusive" value="{%:= rs[i].Caption %}"/>
 		        	<input type="radio" name="{%= rs[i].InputName() %}" class="input-exclusive {%:= selected %}{%= CurrentADC.InstanceId %}" value="{%= rs[i].InputValue() %}" {%:= checked %}/>
     		{%EndIf
 		Next%}

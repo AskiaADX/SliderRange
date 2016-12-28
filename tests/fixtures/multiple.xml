@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<fixture xmlns="http://www.askia.com/ADCUnitTestSchema"
+﻿<?xml version="1.0" encoding="utf-8"?>
+<fixture xmlns="http://www.askia.com/2.1.0/ADXUnitTestSchema"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://www.askia.com/ADCUnitTestSchema http://www.askia.com/Downloads/dev/schemas/adc2.0/UnitTests.xsd">
+         xsi:schemaLocation="http://www.askia.com/2.1.0/ADXUnitTestSchema https://raw.githubusercontent.com/AskiaADX/ADXSchema/2.1.0/ADXUnitTests.xsd">
   <arrange>
     <Survey Name="MultipleSurvey" CurrentQuestion="multiple" Version="1.0" Full="1" MaxQuestionID="2" MaxResponseID="52">
       <Languages>
@@ -26,25 +26,19 @@
       <LongCaption>multiple</LongCaption>
       <Modalities>
       <Modality ID="1">
-      <ShortCaption>1</ShortCaption>
+      <ShortCaption>A</ShortCaption>
       </Modality>
       <Modality ID="2">
-      <ShortCaption>2</ShortCaption>
+      <ShortCaption>B</ShortCaption>
       </Modality>
       <Modality ID="3">
-      <ShortCaption>3</ShortCaption>
+      <ShortCaption>C</ShortCaption>
       </Modality>
       <Modality ID="4">
-      <ShortCaption>4</ShortCaption>
+      <ShortCaption>D</ShortCaption>
       </Modality>
       <Modality ID="5">
-      <ShortCaption>100</ShortCaption>
-      </Modality>
-      <Modality ID="6" Exclusive="1">
-      <ShortCaption>100</ShortCaption>
-      </Modality>
-      <Modality ID="7" Exclusive="1">
-      <ShortCaption>100</ShortCaption>
+      <ShortCaption>E</ShortCaption>
       </Modality>
       </Modalities>
 	</Question>
