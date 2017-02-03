@@ -15,7 +15,7 @@ Dim i
         <div id="hidden-inputs-{%= CurrentADC.InstanceId %}">
             <ul>
                 {%For i = 1 To 2 %}
-                <li><input type="number" name="{%= CurrentQuestion.iteration(rs[i].Index).InputName() %}" class="input-slider input-slider-{%= CurrentADC.InstanceId %}" value="{%= CurrentQuestion.iteration(rs[i].Index).InputValue() %}"/></li>
+                <li><input type="hidden" name="{%= CurrentQuestion.iteration(rs[i].Index).InputName() %}" class="input-slider input-slider-{%= CurrentADC.InstanceId %}" value="{%= CurrentQuestion.iteration(rs[i].Index).InputValue() %}"/></li>
                 {%Next%}
             </ul>
         </div>
