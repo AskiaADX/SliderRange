@@ -2,10 +2,6 @@ ul, li {
     list-style : none;
 }
 
-h2 {
-    color : red;
-}
-
 .sliderRange {
     margin : 30px;
     margin : auto
@@ -40,10 +36,12 @@ h2 {
 
 .exclusive {
     display 		: block;
-    box-shadow 		: 1px 1px 2px 0 #999;
-    border-radius 	: 2px;
+    box-shadow 		: none;
     width 			: 100%;
     padding 		: 7px 0;
+}
+.exclusive:hover {
+    box-shadow 		: 0px 2px 4px rgba(0,0,0,.2);
 }
 
 .input-slider, .input-exclusive {
@@ -72,4 +70,8 @@ h2 {
     height 		: 50px;
     position 	: relative;
     margin		: auto;
+}
+
+.noUi-value-large {
+    min-width: 40px;
 }

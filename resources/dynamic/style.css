@@ -104,3 +104,18 @@ EndIf
     	max-width  : {%= CurrentADC.PropValue("slider_width") %};
     {% EndIf %}
 }
+
+#adc_{%= CurrentADC.instanceId %} .exclusive, 
+#adc_{%= CurrentADC.instanceId %} .noUi-origin, 
+#adc_{%= CurrentADC.instanceId %} .noUi-target, 
+#adc_{%= CurrentADC.instanceId %} .noUi-handle, 
+#adc_{%= CurrentADC.instanceId %} .noUi-tooltip,
+#adc_{%= CurrentADC.instanceId %} .startAndEnd{
+    border-radius 	: {%= Theme.BorderRadius %};
+}
+
+#adc_{%= CurrentADC.InstanceId%} .noUi-marker-normal {
+    {% IF CurrentADC.PropValue("showSubMarkers") <> "1" Then %}
+    	display:none;
+  	{% EndIF %}	  
+}

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<control  xmlns="http://www.askia.com/2.0.0/ADCSchema"
+<control  xmlns="http://www.askia.com/2.1.0/ADCSchema"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://www.askia.com/2.0.0/ADCSchema https://raw.githubusercontent.com/AskiaADX/ADXSchema/2.0.0/ADCSchema.xsd"
-          version="2.0.0"
-          askiaCompat="5.3.3">
+          xsi:schemaLocation="http://www.askia.com/2.1.0/ADCSchema https://raw.githubusercontent.com/AskiaADX/ADXSchema/2.1.0/ADCSchema.xsd"
+          version="2.1.0"
+          askiaCompat="5.4.2">
   <info>
-    <name>adc2-sliderRange</name>
+    <name>SliderRange</name>
     <guid>f9327eb5-6554-458a-be0e-62eb65fc9ef4</guid>
-    <version>1.0.3</version>
+    <version>2.0.0</version>
     <date>2016-07-01</date>
     <description><![CDATA[This article give you access to the Slider Range Javascript control. You also got access to a live example, qex file example and details of the parameters available for this control.]]></description>
     <company></company>
@@ -17,7 +17,6 @@
     <categories>
       <category>General</category>
     </categories>
-    <style width="400" height="300" />
     <constraints>
       <constraint on="questions" chapter="false" single="false" multiple="true" numeric="true" date="false" open="false" requireParentLoop="false" />
       <constraint on="controls" responseblock="true" label="false" textbox="false" checkbox="false" listbox="false" radiobutton="false" />
@@ -80,7 +79,7 @@
       </property>
       <property xsi:type="standardProperty" id="tooltip" name="Tooltip" type="boolean" require="false" visible="true">
         <description><![CDATA[Display or no tooltips]]></description>
-        <value><![CDATA[false]]></value>
+        <value><![CDATA[0]]></value>
       </property>
       <property xsi:type="standardProperty" id="orientation" name="Orientation" type="string" require="false" visible="true">
         <description><![CDATA[Orientation of the slider]]></description>
@@ -110,13 +109,13 @@
         <description><![CDATA[The max Width of the slider]]></description>
         <value><![CDATA[100%]]></value>
       </property>
-      <property xsi:type="standardProperty" id="slider_color" name="Slider Color" type="color" require="false" visible="true">
-        <description><![CDATA[The color of the slider when not focus]]></description>
-        <value><![CDATA[250,250,250]]></value>
+      <property xsi:type="standardProperty" id="slider_color" name="Slider Background Color" type="color" mode="dynamic" require="true" visible="false">
+        <description><![CDATA[The background color of the slider when not focus]]></description>
+        <value><![CDATA[{%= Theme.NeutralLightColor %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="selected_slider_color" name="Selected Slider Color" type="color" require="false" visible="true">
-        <description><![CDATA[The color of the slider when focus]]></description>
-        <value><![CDATA[0,124,196]]></value>
+      <property xsi:type="standardProperty" id="selected_slider_color" name="Selected Slider Background Color" type="color" mode="dynamic" require="true" visible="false">
+        <description><![CDATA[The background color of the slider when focus]]></description>
+        <value><![CDATA[{%= Theme.PrimaryColor %}]]></value>
       </property>
     </category>
     <category id="numeric" name="For Numeric">
@@ -134,33 +133,37 @@
           <option value="none" text="no" />
         </options>
       </property>
-      <property xsi:type="standardProperty" id="scale_max_width" name="Scale max width" type="string" require="false" visible="true">
+      <property xsi:type="standardProperty" id="showSubMarkers" name="Display sub markers" type="boolean" mode="static" require="false" visible="true">
+        <description><![CDATA[Display sub markers]]></description>
+        <value><![CDATA[0]]></value>
+      </property>
+      <property xsi:type="standardProperty" id="scale_max_width" name="Scale min width" type="string" require="false" visible="true">
         <description><![CDATA[Scale disapear when the browser's size is inf or equal to the value]]></description>
-        <value><![CDATA[240px]]></value>
+        <value><![CDATA[300px]]></value>
       </property>
       <property xsi:type="standardProperty" id="scale_density" name="Scale Density" type="number" require="false" visible="true">
         <description><![CDATA[Density of the scale]]></description>
         <value><![CDATA[1]]></value>
       </property>
-      <property xsi:type="standardProperty" id="scale_values_font_size" name="Scale Values Font Size" type="string" require="false" visible="true">
+      <property xsi:type="standardProperty" id="scale_values_font_size" name="Scale Values Font Size" type="string" mode="dynamic" require="true" visible="false">
         <description><![CDATA[Pips font size in scale]]></description>
-        <value><![CDATA[10px]]></value>
+        <value><![CDATA[{%= Theme.SmallFS %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="scale_values_color" name="Scale Values Color" type="color" require="false" visible="true" colorFormat="rgb">
+      <property xsi:type="standardProperty" id="scale_values_color" name="Scale Values Color" type="color" mode="dynamic" require="true" visible="false" colorFormat="rgb">
         <description><![CDATA[Scale Values Color]]></description>
-        <value><![CDATA[153,153,153]]></value>
+        <value><![CDATA[{%= Theme.NeutralDarkColor %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="scale_color" name="Scale Color" type="color" require="false" visible="true" colorFormat="rgb">
+      <property xsi:type="standardProperty" id="scale_color" name="Scale Color" type="color" mode="dynamic" require="true" visible="false" colorFormat="rgb">
         <description><![CDATA[Color of the scale]]></description>
-        <value><![CDATA[153,153,153]]></value>
+        <value><![CDATA[{%= Theme.NeutralDarkColor %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="selected_scale_values_font_size" name="Selected Scale Values Font Size" type="string" require="false" visible="true">
+      <property xsi:type="standardProperty" id="selected_scale_values_font_size" name="Selected Scale Values Font Size" type="string" mode="dynamic" require="true" visible="false">
         <description><![CDATA[Selected Scale Values Fond Size]]></description>
-        <value><![CDATA[16px]]></value>
+        <value><![CDATA[{%= Theme.NormalFS %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="selected_scale_values_color" name="Selected Scale Values Color" type="color" require="false" visible="true" colorFormat="rgb">
+      <property xsi:type="standardProperty" id="selected_scale_values_color" name="Selected Scale Values Color" type="color" mode="dynamic" require="true" visible="false" colorFormat="rgb">
         <description><![CDATA[Selected Scale Values Color]]></description>
-        <value><![CDATA[153,153,153]]></value>
+        <value><![CDATA[{%= Theme.PrimaryColor %}]]></value>
       </property>
       <property xsi:type="standardProperty" id="label_right" name="Right Label" type="string" require="false" visible="true">
         <description><![CDATA[A label display at the right of the slider (in horizontal position) or at the bottom (in vertical position)]]></description>
@@ -170,9 +173,9 @@
         <description><![CDATA[A label display at the left of the slider (in horizontal position) or at the top (in vertical position)]]></description>
         <value><![CDATA[Left side]]></value>
       </property>
-      <property xsi:type="standardProperty" id="label_font_size" name="Labels Font Size" type="string" require="false" visible="true">
+      <property xsi:type="standardProperty" id="label_font_size" name="Labels Font Size" type="string" mode="dynamic" require="true" visible="false">
         <description><![CDATA[The font size of labels]]></description>
-        <value><![CDATA[20px]]></value>
+        <value><![CDATA[{%= Theme.NormalFS %}]]></value>
       </property>
       <property xsi:type="standardProperty" id="label_alignment" name="Label Alignment" type="string" require="false" visible="true">
         <description><![CDATA[Alignment of the two labels]]></description>
@@ -183,13 +186,13 @@
           <option value="bottom" text="Bottom" />
         </options>
       </property>
-      <property xsi:type="standardProperty" id="label_color" name="Label Color" type="color" require="false" visible="true" colorFormat="rgb">
+      <property xsi:type="standardProperty" id="label_color" name="Label Color" type="color" mode="dynamic" require="true" visible="false" colorFormat="rgb">
         <description><![CDATA[Color of the two labels]]></description>
-        <value><![CDATA[68,68,68]]></value>
+        <value><![CDATA[{%= Theme.BlackColor %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="label_background" name="Label Background Color" type="color" require="false" visible="true" colorFormat="rgb">
+      <property xsi:type="standardProperty" id="label_background" name="Label Background Color" type="color" mode="dynamic" require="true" visible="false" colorFormat="rgb">
         <description><![CDATA[Color of the two labels]]></description>
-        <value><![CDATA[250,250,250]]></value>
+        <value><![CDATA[{%= Theme.NeutralLightColor %}]]></value>
       </property>
       <property xsi:type="standardProperty" id="top_label_array" name="Top Label Array" type="string" require="false" visible="true">
         <description><![CDATA[All labels which will be display on the top of the slider]]></description>
@@ -199,7 +202,7 @@
         <description><![CDATA[Position of the different labels]]></description>
         <value></value>
       </property>
-      <property xsi:type="standardProperty" id="sae_border_style" name="Labels Border Style" type="string" require="false" visible="true">
+      <property xsi:type="standardProperty" id="sae_border_style" name="Labels Border Style" type="string" require="false" visible="false">
         <description><![CDATA[The style of the border]]></description>
         <value><![CDATA[solid]]></value>
         <options>
@@ -210,33 +213,25 @@
           <option value="double" text="Double" />
         </options>
       </property>
-      <property xsi:type="standardProperty" id="sae_border_thickness" name="Labels Border Thickness" type="string" require="false" visible="true">
+      <property xsi:type="standardProperty" id="sae_border_thickness" name="Labels Border Thickness" type="string" mode="dynamic" require="true" visible="false">
         <description><![CDATA[The thickness of the border around the labels responses]]></description>
-        <value><![CDATA[1px]]></value>
-        <options>
-          <option value="none" text="None" />
-          <option value="1px" text="1px" />
-          <option value="2px" text="2px" />
-          <option value="3px" text="3px" />
-          <option value="4px" text="4px" />
-          <option value="5px" text="5px" />
-        </options>
+        <value><![CDATA[{%= Theme.BorderWidth %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="sae_border_color" name="Labels Border Color" type="color" require="false" visible="true" colorFormat="rgb">
+      <property xsi:type="standardProperty" id="sae_border_color" name="Labels Border Color" type="color" mode="dynamic" require="true" visible="false" colorFormat="rgb">
         <description><![CDATA[The color of the border]]></description>
-        <value><![CDATA[68,68,68]]></value>
+        <value><![CDATA[{%= Theme.NeutralDarkColor %}]]></value>
       </property>
       <property xsi:type="standardProperty" id="sae_max_width" name="Labels Max Width" type="string" require="false" visible="true">
         <description><![CDATA[The max width of labels]]></description>
         <value><![CDATA[200px]]></value>
       </property>
-      <property xsi:type="standardProperty" id="sae_padding" name="Labels Padding" type="string" require="false" visible="true">
+      <property xsi:type="standardProperty" id="sae_padding" name="Labels Padding" type="string" require="false" visible="false">
         <description><![CDATA[Padding of the differents labels]]></description>
         <value><![CDATA[5px]]></value>
       </property>
-      <property xsi:type="standardProperty" id="responsive_width" name="Responsive Side Width" type="number" require="false" visible="true">
+      <property xsi:type="standardProperty" id="responsive_width" name="Responsive Side Width" type="number" require="false" visible="false">
         <description><![CDATA[number of pixel when side alignment become top]]></description>
-        <value><![CDATA[300]]></value>
+        <value><![CDATA[400]]></value>
       </property>
     </category>
     <category id="exclusives_responses" name="Exclusives Responses">
@@ -253,19 +248,19 @@
           <option value="center" text="Center" />
         </options>
       </property>
-      <property xsi:type="standardProperty" id="exclu_font_size" name="Exclusive Font Size" type="string" require="false" visible="true">
+      <property xsi:type="standardProperty" id="exclu_font_size" name="Exclusive Font Size" type="string" mode="dynamic" require="true" visible="false">
         <description><![CDATA[Font size of exclusives responses]]></description>
-        <value><![CDATA[16px]]></value>
+        <value><![CDATA[{%= Theme.NormalFS %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="exclu_font_color" name="Exclusive Font Color" type="color" require="false" visible="true" colorFormat="rgb">
+      <property xsi:type="standardProperty" id="exclu_font_color" name="Exclusive Font Color" type="color" mode="dynamic" require="true" visible="false" colorFormat="rgb">
         <description><![CDATA[Font color of exclusives button]]></description>
-        <value><![CDATA[68,68,68]]></value>
+        <value><![CDATA[{%= Theme.BlackColor %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="exclu_background_color" name="Exclusive Background Color" type="color" require="false" visible="true" colorFormat="rgb">
+      <property xsi:type="standardProperty" id="exclu_background_color" name="Exclusive Background Color" type="color" mode="dynamic" require="true" visible="false" colorFormat="rgb">
         <description><![CDATA[The color of the background]]></description>
-        <value><![CDATA[232,232,232]]></value>
+        <value><![CDATA[{%= Theme.NeutralLightColor %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="exclu_border_style" name="Exclusive Border Style" type="string" require="false" visible="true">
+      <property xsi:type="standardProperty" id="exclu_border_style" name="Exclusive Border Style" type="string" require="false" visible="false">
         <description><![CDATA[The style of the border]]></description>
         <value><![CDATA[solid]]></value>
         <options>
@@ -276,31 +271,23 @@
           <option value="double" text="Double" />
         </options>
       </property>
-      <property xsi:type="standardProperty" id="exclu_border_thickness" name="Exclusive Border Thickness" type="string" require="false" visible="true">
+      <property xsi:type="standardProperty" id="exclu_border_thickness" name="Exclusive Border Thickness" type="string" mode="dynamic" require="true" visible="false">
         <description><![CDATA[The thickness of the border around the exclusives responses]]></description>
-        <value><![CDATA[1px]]></value>
-        <options>
-          <option value="none" text="None" />
-          <option value="1px" text="1px" />
-          <option value="2px" text="2px" />
-          <option value="3px" text="3px" />
-          <option value="4px" text="4px" />
-          <option value="5px" text="5px" />
-        </options>
+        <value><![CDATA[{%= Theme.BorderWidth %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="exclu_border_color" name="Exclusive Border Color" type="color" require="false" visible="true" colorFormat="rgb">
+      <property xsi:type="standardProperty" id="exclu_border_color" name="Exclusive Border Color" type="color" mode="dynamic" require="true" visible="false" colorFormat="rgb">
         <description><![CDATA[The color of the border]]></description>
-        <value><![CDATA[68,68,68]]></value>
+        <value><![CDATA[{%= Theme.NeutralDarkColor %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="hover_exclu_font_color" name="Hover Exclusive Font Color" type="color" require="false" visible="true" colorFormat="rgb">
+      <property xsi:type="standardProperty" id="hover_exclu_font_color" name="Hover Exclusive Font Color" type="color" mode="dynamic" require="true" visible="false" colorFormat="rgb">
         <description><![CDATA[Font color of exclusives responses on hover]]></description>
-        <value><![CDATA[68,68,68]]></value>
+        <value><![CDATA[{%= Theme.BlackColor %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="hover_exclu_background_color" name="Hover Exclusive Background Color" type="color" require="false" visible="true" colorFormat="rgb">
+      <property xsi:type="standardProperty" id="hover_exclu_background_color" name="Hover Exclusive Background Color" type="color" mode="dynamic" require="true" visible="false" colorFormat="rgb">
         <description><![CDATA[Color of the background on hover]]></description>
-        <value><![CDATA[243,243,243]]></value>
+        <value><![CDATA[{%= Theme.WhiteColor %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="hover_exclu_border_style" name="Hover Exclusive Border Style" type="string" require="false" visible="true">
+      <property xsi:type="standardProperty" id="hover_exclu_border_style" name="Hover Exclusive Border Style" type="string" require="false" visible="false">
         <description><![CDATA[Border style on hover]]></description>
         <value><![CDATA[solid]]></value>
         <options>
@@ -311,31 +298,23 @@
           <option value="double" text="Double" />
         </options>
       </property>
-      <property xsi:type="standardProperty" id="hover_exclu_border_thickness" name="Hover Exclusive Border Thickness" type="string" require="false" visible="true">
+      <property xsi:type="standardProperty" id="hover_exclu_border_thickness" name="Hover Exclusive Border Thickness" type="string" mode="dynamic" require="true" visible="false">
         <description><![CDATA[The thickness of the border around the exclusives responses on hover]]></description>
-        <value><![CDATA[1px]]></value>
-        <options>
-          <option value="none" text="None" />
-          <option value="1px" text="1px" />
-          <option value="2px" text="2px" />
-          <option value="3px" text="3px" />
-          <option value="4px" text="4px" />
-          <option value="5px" text="5px" />
-        </options>
+        <value><![CDATA[{%= Theme.BorderWidth %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="hover_exclu_border_color" name="Hover Exclusive Border Color" type="color" require="false" visible="true" colorFormat="rgb">
+      <property xsi:type="standardProperty" id="hover_exclu_border_color" name="Hover Exclusive Border Color" type="color" mode="dynamic" require="true" visible="false" colorFormat="rgb">
         <description><![CDATA[The color of the border]]></description>
-        <value><![CDATA[68,68,68]]></value>
+        <value><![CDATA[{%= Theme.NeutralDarkColor %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="selected_exclu_font_color" name="Selected Exclusive Font Color" type="color" require="false" visible="true" colorFormat="rgb">
+      <property xsi:type="standardProperty" id="selected_exclu_font_color" name="Selected Exclusive Font Color" type="color" mode="dynamic" require="true" visible="false" colorFormat="rgb">
         <description><![CDATA[Font color of exclusives responses when selected]]></description>
-        <value><![CDATA[255,255,255]]></value>
+        <value><![CDATA[{%= Theme.WhiteColor %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="selected_exclu_background_color" name="Selected Exclusive Background Color" type="color" require="false" visible="true" colorFormat="rgb">
+      <property xsi:type="standardProperty" id="selected_exclu_background_color" name="Selected Exclusive Background Color" type="color" mode="dynamic" require="true" visible="false" colorFormat="rgb">
         <description><![CDATA[Color of the background when selected]]></description>
-        <value><![CDATA[0,157,251]]></value>
+        <value><![CDATA[{%= Theme.PrimaryColor %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="selected_exclu_border_style" name="Selected Exclusive Border Style" type="string" require="false" visible="true">
+      <property xsi:type="standardProperty" id="selected_exclu_border_style" name="Selected Exclusive Border Style" type="string" require="false" visible="false">
         <description><![CDATA[Border style when selected]]></description>
         <value><![CDATA[solid]]></value>
         <options>
@@ -346,21 +325,13 @@
           <option value="double" text="Double" />
         </options>
       </property>
-      <property xsi:type="standardProperty" id="selected_exclu_border_thickness" name="Selected Exclusives Border Thickness" type="string" require="false" visible="true">
+      <property xsi:type="standardProperty" id="selected_exclu_border_thickness" name="Selected Exclusives Border Thickness" type="string" mode="dynamic" require="true" visible="false">
         <description><![CDATA[The thickness of the border around the exclusives responses when selected]]></description>
-        <value><![CDATA[1px]]></value>
-        <options>
-          <option value="none" text="None" />
-          <option value="1px" text="1px" />
-          <option value="2px" text="2px" />
-          <option value="3px" text="3px" />
-          <option value="4px" text="4px" />
-          <option value="5px" text="5px" />
-        </options>
+        <value><![CDATA[{%= Theme.BorderWidth %}]]></value>
       </property>
-      <property xsi:type="standardProperty" id="selected_exclu_border_color" name="Selected Exclusive Border Color" type="color" require="false" visible="true" colorFormat="rgb">
+      <property xsi:type="standardProperty" id="selected_exclu_border_color" name="Selected Exclusive Border Color" type="color" mode="dynamic" require="true" visible="false" colorFormat="rgb">
         <description><![CDATA[The color of the border]]></description>
-        <value><![CDATA[255,255,255]]></value>
+        <value><![CDATA[{%= Theme.NeutralDarkColor %}]]></value>
       </property>
     </category>
     <category id="format_config" name="Format Configuration">
@@ -374,7 +345,7 @@
       </property>
       <property xsi:type="standardProperty" id="thousand_separator" name="Thousand Separator" type="string" require="false" visible="true">
         <description><![CDATA[The string or char used to separate thousands part]]></description>
-        <value><![CDATA[ ]]></value>
+        <value></value>
       </property>
       <property xsi:type="standardProperty" id="prefix" name="Prefix" type="string" require="false" visible="true">
         <description><![CDATA[The prefix of all values in the slider]]></description>

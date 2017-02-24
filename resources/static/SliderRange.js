@@ -154,6 +154,9 @@
         nbrs[pos2].classList.add("currentNumber");
         inputs[pos1].checked = true;
         inputs[pos2].checked = true;
+        if (window.askia) {
+            askia.triggerAnswer();
+        }
     }
     
     function checkNumeric(instanceId) {
@@ -183,6 +186,9 @@
         }
         nbrs[pos1].classList.add("currentNumber");
         nbrs[pos2].classList.add("currentNumber");
+        if (window.askia) {
+            askia.triggerAnswer();
+        }
     }
     
     function exclusivesMultiples(exclusive, instanceId) {
@@ -192,6 +198,9 @@
         for (var i = 0, l = sliderConfig[instanceId].elements.exclusives.length; i < l; i++) {
             if (sliderConfig[instanceId].elements.exclusives[i] === exclusive) {
                 sliderConfig[instanceId].elements.inputExclu[i].checked = true;
+                if (window.askia) {
+                    askia.triggerAnswer();
+                }
                 return;
             }
         }
@@ -218,23 +227,23 @@
         numbers.push(startAndEnd[1]);
         sliderConfig[currentInstanceId].elements.numbers = numbers;
         
-        currentInstance.noUiSlider.on('update', function() {
-            var instanceId = this.options.instanceId;
-            if (sliderConfig[instanceId].questionType === "multiple") {
-                checkMultiples(instanceId);
-            } else if (sliderConfig[instanceId].questionType === "numeric") {
-                checkNumeric(instanceId)
-            }
-        });
+        //currentInstance.noUiSlider.on('update', function() {
+        //    var instanceId = this.options.instanceId;
+        //    if (sliderConfig[instanceId].questionType === "multiple") {
+        //        checkMultiples(instanceId);
+        //    } else if (sliderConfig[instanceId].questionType === "numeric") {
+        //        checkNumeric(instanceId)
+        //    }
+        //});
 
-        currentInstance.noUiSlider.on('end', function() {
-            var instanceId = this.options.instanceId;
-            if (sliderConfig[instanceId].questionType === "multiple") {
-                checkMultiples(instanceId);
-            } else if (sliderConfig[instanceId].questionType === "numeric") {
-                checkNumeric(instanceId);
-            }
-        });
+        //currentInstance.noUiSlider.on('end', function() {
+        //    var instanceId = this.options.instanceId;
+        //    if (sliderConfig[instanceId].questionType === "multiple") {
+        //        checkMultiples(instanceId);
+        //    } else if (sliderConfig[instanceId].questionType === "numeric") {
+        //        checkNumeric(instanceId);
+        //    }
+        //});
 
         currentInstance.noUiSlider.on('change', function() {
             var instanceId = this.options.instanceId;
