@@ -19,7 +19,7 @@ ul, li {
 
 .noUi-tooltip {
     word-wrap : break-word;
-    width : 50px;
+    min-width : 30px;
 }
 
 .startAndEnd {
