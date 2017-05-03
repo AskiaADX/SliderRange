@@ -34,5 +34,6 @@ slider({
     topLabelArray 	: '{%:= CurrentADC.PropValue("top_label_array") %}',
     topLabelPosition: '{%= CurrentADC.PropValue("top_label_position") %}',
     padding			: '{%= CurrentADC.PropValue("sae_padding") %}',
-    responsiveWidth : {%= CurrentADC.PropValue("responsive_width") %}
+    responsiveWidth : {%= CurrentADC.PropValue("responsive_width") %},
+    currentQuestion: '{%:= CurrentQuestion.Shortcut %}',
 });
