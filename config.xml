@@ -115,7 +115,7 @@
       </property>
       <property xsi:type="standardProperty" id="selected_slider_color" name="Selected Slider Background Color" type="color" mode="dynamic" require="true" visible="false">
         <description><![CDATA[The background color of the slider when focus]]></description>
-        <value><![CDATA[{%= Theme.PrimaryColor %}]]></value>
+        <value><![CDATA[{%= Theme.SecondaryColor %}]]></value>
       </property>
     </category>
     <category id="numeric" name="For Numeric">
@@ -331,7 +331,7 @@
       </property>
       <property xsi:type="standardProperty" id="selected_exclu_border_color" name="Selected Exclusive Border Color" type="color" mode="dynamic" require="true" visible="false" colorFormat="rgb">
         <description><![CDATA[The color of the border]]></description>
-        <value><![CDATA[{%= Theme.NeutralDarkColor %}]]></value>
+        <value><![CDATA[{%= Theme.PrimaryDarkColor %}]]></value>
       </property>
     </category>
     <category id="format_config" name="Format Configuration">
