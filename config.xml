@@ -7,7 +7,7 @@
   <info>
     <name>SliderRange</name>
     <guid>f9327eb5-6554-458a-be0e-62eb65fc9ef4</guid>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
     <date>2016-07-01</date>
     <description><![CDATA[This article give you access to the Slider Range Javascript control. You also got access to a live example, qex file example and details of the parameters available for this control.]]></description>
     <company></company>
@@ -77,9 +77,13 @@
         <description><![CDATA[Value of the minimum distance of the two handles]]></description>
         <value><![CDATA[0]]></value>
       </property>
-      <property xsi:type="standardProperty" id="tooltip" name="Tooltip" type="boolean" require="false" visible="true">
+      <property xsi:type="standardProperty" id="tooltip" name="Tooltip" type="string" mode="dynamic" require="true" visible="true">
         <description><![CDATA[Display or no tooltips]]></description>
         <value><![CDATA[0]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
       </property>
       <property xsi:type="standardProperty" id="orientation" name="Orientation" type="string" require="false" visible="true">
         <description><![CDATA[Orientation of the slider]]></description>
@@ -133,9 +137,13 @@
           <option value="none" text="no" />
         </options>
       </property>
-      <property xsi:type="standardProperty" id="showSubMarkers" name="Display sub markers" type="boolean" mode="static" require="false" visible="true">
+      <property xsi:type="standardProperty" id="showSubMarkers" name="Display sub markers" type="string" mode="dynamic" require="true" visible="true">
         <description><![CDATA[Display sub markers]]></description>
         <value><![CDATA[0]]></value>
+        <options>
+          <option value="1" text="Yes" />
+          <option value="0" text="No" />
+        </options>
       </property>
       <property xsi:type="standardProperty" id="scale_max_width" name="Scale min width" type="string" require="false" visible="true">
         <description><![CDATA[Scale disapear when the browser's size is inf or equal to the value]]></description>
