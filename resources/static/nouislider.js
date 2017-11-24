@@ -446,8 +446,6 @@
 	}
 
 	function testRange ( parsed, entry ) {
-        
-        console.dir(entry);
 
 		// Filter incorrect input.
 		if ( typeof entry !== 'object' || Array.isArray(entry) ) {

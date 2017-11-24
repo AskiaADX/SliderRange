@@ -6,6 +6,7 @@ Dim maxVal = rs.MaxValue
 %}
 
 slider({
+    ismulti	: 0,
     start			: '{%:= CurrentADC.PropValue("start_value") %}',
     end   			: '{%:= CurrentADC.PropValue("end_value") %}',
     min				: {%= minVal %},

@@ -7,13 +7,16 @@ For i = 1 To rs.count
         lastValue = lastValue + 1
     EndIf
 Next
-Dim minVal = rs[1].Caption.ToNumber()
-Dim maxVal = rs[lastValue].Caption.ToNumber()
+' Dim minVal = rs[1].Caption.ToNumber()
+' Dim maxVal = rs[lastValue].Caption.ToNumber()
+Dim minVal = 1
+Dim maxVal = lastValue
 Dim stepVal = maxVal - minVal
 stepVal = stepVal / (lastValue - 1)
 %}
 
 slider({
+    ismulti	: 1,
     start			: '{%:= CurrentADC.PropValue("start_value") %}',
     end   			: '{%:= CurrentADC.PropValue("end_value") %}',
     min				: {%= minVal %},
@@ -44,4 +47,7 @@ slider({
     padding			: '{%= CurrentADC.PropValue("sae_padding") %}',
     responsiveWidth : {%= CurrentADC.PropValue("responsive_width") %},
     currentQuestion: '{%:= CurrentQuestion.Shortcut %}',
+    responsesValues:  [{% Dim j
+		For j = 1 To lastValue
+    %}"{%:= CurrentQuestion.Responses[j].Caption %}"{%:= On((j <> lastValue),",","") %}{% Next j %}]
 });

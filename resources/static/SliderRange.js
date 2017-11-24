@@ -2,7 +2,9 @@
     var currentInstanceId,
         currentInstance,
         optionsSliderCreation,
-        numbers;
+        numbers,
+        ismulti,
+        responsesValues;
     var sliderConfig = {};
     
     function sliderCreation() {
@@ -18,25 +20,72 @@
             optionsSliderCreation.start = startStr;
         }
         
-       
-        noUiSlider.create(currentInstance, {
-            start		: [optionsSliderCreation.start, optionsSliderCreation.end],
-            step		: optionsSliderCreation.step,
-            margin		: optionsSliderCreation.margin,
-            direction	: optionsSliderCreation.direction,
-            orientation	: optionsSliderCreation.orientation,
-            behaviour	: 'tap-drag',
-            animate		: true,
-            animationDuration : 300,
-            connect		: true,
-            tooltips	: optionsSliderCreation.tooltips,
-            range		: {
-                'min'		: optionsSliderCreation.min,
-                'max'		: optionsSliderCreation.max
-            },
-            pips: {
-                mode		: 'steps',
-                density		: optionsSliderCreation.density,
+		if (ismulti) {
+            noUiSlider.create(currentInstance, {
+                start		: [optionsSliderCreation.start, optionsSliderCreation.end],
+                step		: optionsSliderCreation.step,
+                margin		: optionsSliderCreation.margin,
+                direction	: optionsSliderCreation.direction,
+                orientation	: optionsSliderCreation.orientation,
+                behaviour	: 'tap-drag',
+                animate		: true,
+                animationDuration : 300,
+                connect		: true,
+                tooltips	: optionsSliderCreation.tooltips,
+                range		: {
+                    'min'		: optionsSliderCreation.min,
+                    'max'		: optionsSliderCreation.max
+                },
+                pips: {
+                    mode		: 'steps',
+                    density		: optionsSliderCreation.density,
+                    format 		: {
+                        to: function ( value ) {
+                            return (responsesValues[value - 1]);
+                        },
+                        from: function ( value ) {
+                            return responsesValues.indexOf(value) + 1 ;
+                        }
+                    }
+                },
+                format 		: {
+                    to: function ( value ) {
+                        return value - 1;
+                    },
+                    from: function ( value ) {
+                        return value;
+                    }
+                },
+                instanceId	: currentInstanceId
+            });   
+        } else {
+            noUiSlider.create(currentInstance, {
+                start		: [optionsSliderCreation.start, optionsSliderCreation.end],
+                step		: optionsSliderCreation.step,
+                margin		: optionsSliderCreation.margin,
+                direction	: optionsSliderCreation.direction,
+                orientation	: optionsSliderCreation.orientation,
+                behaviour	: 'tap-drag',
+                animate		: true,
+                animationDuration : 300,
+                connect		: true,
+                tooltips	: optionsSliderCreation.tooltips,
+                range		: {
+                    'min'		: optionsSliderCreation.min,
+                    'max'		: optionsSliderCreation.max
+                },
+                pips: {
+                    mode		: 'steps',
+                    density		: optionsSliderCreation.density,
+                    format 		: wNumb({
+                        decimals 	: optionsSliderCreation.decimals,
+                        thousand 	: optionsSliderCreation.thousand,
+                        mark		: optionsSliderCreation.mark,
+                        prefix		: optionsSliderCreation.prefix,
+                        postfix		: optionsSliderCreation.postfix,
+                        negative	: optionsSliderCreation.negative
+                    })
+                },
                 format 		: wNumb({
                     decimals 	: optionsSliderCreation.decimals,
                     thousand 	: optionsSliderCreation.thousand,
@@ -44,18 +93,11 @@
                     prefix		: optionsSliderCreation.prefix,
                     postfix		: optionsSliderCreation.postfix,
                     negative	: optionsSliderCreation.negative
-                })
-            },
-            format 		: wNumb({
-                decimals 	: optionsSliderCreation.decimals,
-                thousand 	: optionsSliderCreation.thousand,
-                mark		: optionsSliderCreation.mark,
-                prefix		: optionsSliderCreation.prefix,
-                postfix		: optionsSliderCreation.postfix,
-                negative	: optionsSliderCreation.negative
-            }),
-            instanceId	: currentInstanceId
-        });
+                }),
+                instanceId	: currentInstanceId
+            });
+        }
+        
         currentInstance.style.height = optionsSliderCreation.height;
         if (optionsSliderCreation.orientation === "vertical") {
             currentInstance.style.maxWidth = optionsSliderCreation.width;
@@ -139,7 +181,7 @@
 
         var pos1Ready = true;
         for (var i = 0, l= nbrs.length; i < l; i++) {
-            var number = parseFloat(getNumber(instanceId, nbrs[i].textContent));
+            var number = responsesValues.indexOf(nbrs[i].textContent);
             if (pos1 === number && pos1Ready) {
                 pos1 = i;
                 pos1Ready = false;
@@ -561,6 +603,8 @@
         options.end = parseInt(pipsNumber * (endPercent / 100));
         options.start = options.min + options.start * options.step;
         options.end = options.min + options.end * options.step;
+        ismulti = options.ismulti || 0;
+        responsesValues = options.responsesValues || [];
 
         if (options.start < options.min) {
             options.start = options.min;
