@@ -133,8 +133,8 @@
         <description><![CDATA[Display the scale]]></description>
         <value><![CDATA[block]]></value>
         <options>
-          <option value="block" text="yes" />
-          <option value="none" text="no" />
+          <option value="block" text="Yes" />
+          <option value="none" text="No" />
         </options>
       </property>
       <property xsi:type="standardProperty" id="showSubMarkers" name="Display sub markers" type="string" mode="dynamic" require="true" visible="true">
@@ -342,7 +342,7 @@
         <value><![CDATA[{%= Theme.PrimaryDarkColor %}]]></value>
       </property>
     </category>
-    <category id="format_config" name="Format Configuration">
+    <category id="format_config" name="Format Configuration (numerical)">
       <property xsi:type="standardProperty" id="decimal_nbr" name="Decimal Number" type="number" require="false" visible="true">
         <description><![CDATA[The number of decimal in slider values]]></description>
         <value><![CDATA[0]]></value>

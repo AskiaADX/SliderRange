@@ -272,6 +272,7 @@
                 handles[i].style.width = "110%";
             }
         }
+
         numbers = Array.prototype.slice.call(currentInstance.querySelectorAll('.noUi-value-sub'));
         var startAndEnd = currentInstance.querySelectorAll('.noUi-value-large');
         numbers.unshift(startAndEnd[0]);
@@ -546,7 +547,7 @@
                         }
                     }
                 }
-                currentInstance.noUiSlider.set([getNumber(currentInstanceId, sliderConfig[currentInstanceId].elements.numbers[input1].innerHTML), getNumber(currentInstanceId, sliderConfig[currentInstanceId].elements.numbers[input2].innerHTML)]);
+                currentInstance.noUiSlider.set([input1 + 1,input2 + 1]);
                 checkMultiples(currentInstanceId);
             } else if (checked.length === 1) {
                 var inputs = sliderConfig[currentInstanceId].elements.inputExclu;
