@@ -14,7 +14,10 @@ Dim i
     				If Not(rs[i].IsExclusive) Then 
         				checked = On(rs[i].IsSelected, "checked=\"checked\"", "")
         				selected = On(rs[i].IsSelected, "selected-", "")%}
-                		<li><input type="radio" name="{%= rs[i].InputName() %}" class="input-slider input-slider-{%= CurrentADC.InstanceId %} {%:= selected %}{%= CurrentADC.InstanceId %}" value="{%= rs[i].InputValue() %}" {%:= checked %}/></li>
+                		<li>
+                            <label for="radio_{%= rs[i].InputName() %}" hidden>Input radio</label>
+                            <input type="radio" id="radio_{%= rs[i].InputName() %}" name="{%= rs[i].InputName() %}" class="input-slider input-slider-{%= CurrentADC.InstanceId %} {%:= selected %}{%= CurrentADC.InstanceId %}" value="{%= rs[i].InputValue() %}" {%:= checked %}/>
+            			</li>
             		{%EndIf%}
                 {%Next%}
             </ul>
@@ -26,7 +29,8 @@ Dim i
         			checked = On(rs[i].IsSelected, "checked=\"checked\"", "")
         			selected = On(rs[i].IsSelected, "selected-", "")%}
         			<input type="button" name="{%= rs[i].InputName() %}" class="exclusive" value="{%:= rs[i].Caption %}"/>
-		        	<input type="radio" name="{%= rs[i].InputName() %}" class="input-exclusive {%:= selected %}{%= CurrentADC.InstanceId %}" value="{%= rs[i].InputValue() %}" {%:= checked %}/>
+                    <label for="radio_{%= rs[i].InputName() %}" hidden>Input radio</label>
+		        	<input type="radio"  id="radio_{%= rs[i].InputName() %}" name="{%= rs[i].InputName() %}" class="input-exclusive {%:= selected %}{%= CurrentADC.InstanceId %}" value="{%= rs[i].InputValue() %}" {%:= checked %}/>
     		{%EndIf
 		Next%}
     </div>
