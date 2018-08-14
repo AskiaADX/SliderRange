@@ -10,7 +10,7 @@
     <version>2.0.2</version>
     <date>2016-07-01</date>
     <description><![CDATA[This article give you access to the Slider Range Javascript control. You also got access to a live example, qex file example and details of the parameters available for this control.
-	v2.0.3 - Added hidden labels to inputs]]></description>
+	v2.0.3 - Added aria-labels to inputs]]></description>
     <company>Askia</company>
     <author><![CDATA[]]></author>
     <site>https://askia.com/</site>

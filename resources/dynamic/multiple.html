@@ -14,9 +14,8 @@ Dim i
     				If Not(rs[i].IsExclusive) Then 
         				checked = On(rs[i].IsSelected, "checked=\"checked\"", "")
         				selected = On(rs[i].IsSelected, "selected-", "")%}
-                		<li>
-                            <label for="radio_{%= rs[i].InputName() %}" hidden>Input radio</label>
-                            <input type="radio" id="radio_{%= rs[i].InputName() %}" name="{%= rs[i].InputName() %}" class="input-slider input-slider-{%= CurrentADC.InstanceId %} {%:= selected %}{%= CurrentADC.InstanceId %}" value="{%= rs[i].InputValue() %}" {%:= checked %}/>
+                		<li>                           
+                            <input type="radio" aria-label="Input radio" id="radio_{%= rs[i].InputName() %}" name="{%= rs[i].InputName() %}" class="input-slider input-slider-{%= CurrentADC.InstanceId %} {%:= selected %}{%= CurrentADC.InstanceId %}" value="{%= rs[i].InputValue() %}" {%:= checked %}/>
             			</li>
             		{%EndIf%}
                 {%Next%}
