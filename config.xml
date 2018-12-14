@@ -7,7 +7,7 @@
   <info>
     <name>SliderRange</name>
     <guid>f9327eb5-6554-458a-be0e-62eb65fc9ef4</guid>
-    <version>2.0.2</version>
+    <version>3.0.0</version>
     <date>2016-07-01</date>
     <description><![CDATA[This article give you access to the Slider Range Javascript control. You also got access to a live example, qex file example and details of the parameters available for this control.
 	v2.0.3 - Added aria-labels to inputs]]></description>
@@ -19,7 +19,7 @@
       <category>General</category>
     </categories>
     <constraints>
-      <constraint on="questions" chapter="false" single="false" multiple="true" numeric="true" date="false" open="false" requireParentLoop="false" />
+      <constraint on="questions" chapter="false" single="false" multiple="true" numeric="true" date="false" open="false" requireParentLoop="false" RequireLoopDepth="false" />
       <constraint on="controls" responseblock="true" label="false" textbox="false" checkbox="false" listbox="false" radiobutton="false" />
       <constraint on="responses" max="*" min="*" />
     </constraints>
